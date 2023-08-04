@@ -82,15 +82,17 @@ def main [] {
     cd $models
 
     # find all symlinks
-    ls -la | 
+    let links = (ls -la | 
         where not ($it.target | is-empty) | 
         select name target | 
-        sort-by name | 
-        save -f links.nuon
+        sort-by name)
+		
 
-    # remove them
-    open links.nuon | each {|p| rm $p.name }
-
+	if not ($links | is-empty) {
+        $links | save -f links.nuon
+		# remove them
+		open links.nuon | each {|p| rm $p.name }
+	}
 
     cd $root
 
