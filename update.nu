@@ -28,12 +28,12 @@ def link [src:string, target:string, --dry, --verbose(-v), --absolute(-a) ] {
 	}
 
 	let src = if $absolute {
-		($src | path expand | str replace -sa '\' '/' )
+		($src | path expand | str replace -a '\' '/' )
 		} else {
 			$src
 		}
 	let target = if $absolute {
-		($target | path expand | str replace -sa '\' '/' )
+		($target | path expand | str replace -a '\' '/' )
 		} else {
 			$target
 		}
@@ -41,8 +41,8 @@ def link [src:string, target:string, --dry, --verbose(-v), --absolute(-a) ] {
 		print $"Would run:"
 	}
 	if $nu.os-info.family == windows {
-		let src = ($src | str replace -sa '/' '\')
-		let target = ($target | str replace -sa '/' '\')
+		let src = ($src | str replace -a '/' '\')
+		let target = ($target | str replace -a '/' '\')
 		if $dir {
 			if $dry or $verbose {
 				print $"mklink /D \"($target)\" \"($src)\""
