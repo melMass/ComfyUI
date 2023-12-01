@@ -1,0 +1,6 @@
+{
+    "python.analysis.extraPaths": [
+        "${workspaceFolder}/custom_nodes/comfy_mtb_utils/extern",
+    ],
+    "OpenCL.explorer.localizedProperties": true
+}
